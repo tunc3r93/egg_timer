@@ -3,7 +3,7 @@ class EggTimer {
         this.startBtn = document.getElementById("start-timer-btn");
         this.timerInterval = null;
         this.language = null;
-        
+        this.timeInSeconds = 0;
 
         document.addEventListener('DOMContentLoaded', () => {
             // Event-Listener für Maus-Events auf den Timer-Optionen hinzufügen
@@ -48,25 +48,25 @@ class EggTimer {
         document.getElementById('bigEgg').style.display = 'block';
         document.getElementById('previewContainer').style.display = 'none';
 
-        let time = parseInt(selectedTime.value);
         let countdownElement = document.getElementById('countdown');
 
         clearInterval(this.timerInterval);
 
         let interval = setInterval(() => {
-            let minutes = Math.floor(time / 60);
-            let seconds = time % 60;
+            let minutes = Math.floor(this.timeInSeconds / 60);
+            let seconds = this.timeInSeconds % 60;
+
             countdownElement.innerText = `Noch ${minutes}:${seconds < 10 ? '0' : ''}${seconds} Minuten`;
-            this.updateBigEggState(time, selectedTime.value);
-            if (time <= 0) {
+            this.updateBigEggState(this.timeInSeconds, selectedTime.value);
+            if (this.timeInSeconds <= 0) {
                 clearInterval(interval);
                 countdownElement.innerText = "Fertig!";
             }
-            time--;
+            this.timeInSeconds--;
         }, 1000);
 
         this.timerInterval = interval;
-        this.updateBigEggState(time, selectedTime.value);
+        this.updateBigEggState(this.timeInSeconds, selectedTime.value);
     }
 
     updateBigEggState = (time, totalTime) => {
@@ -91,17 +91,20 @@ class EggTimer {
 
         previewContainer.style.display = 'block';
         previewTitle.innerText = title;
-        
+
         // Vorschau je nach Ei-Typ anpassen
         if (type === 'soft') {
             yolk.style.background = 'yellow';
+            this.timeInSeconds = 180;
             yolk.style.animation = ''; // Keine Animation für weiches Ei
         } else if (type === 'medium') {
             yolk.style.background = 'gold';
             yolk.style.animation = '';
+            this.timeInSeconds = 300;
         } else if (type === 'hard') {
             yolk.style.background = 'orange';
             yolk.style.animation = '';
+            this.timeInSeconds = 480;
         }
     }
 
