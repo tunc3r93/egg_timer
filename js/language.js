@@ -38,8 +38,6 @@ class Language{
     };
     
     updateJSText = (data) =>{
-        console.log("data " + JSON.stringify(data));
-
         this.jsTexts = data;
     }
     
