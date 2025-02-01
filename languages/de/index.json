@@ -1,0 +1,12 @@
+{
+    "title": "Eier Uhr",
+    "header": "Eier Uhr",
+    "label": {
+        "soft": "Weich",
+        "medium": "Mittel",
+        "hard": "Hart"
+    },
+    "button": {
+        "start": "Start"
+    }
+}
