@@ -90,7 +90,6 @@ body {
     margin-top: 20px;
 }
 
-/* Vorschau Container unter den Input-Checkboxen, mittig ausgerichtet */
 .preview-container {
     position: absolute;
     display: none;
@@ -103,9 +102,9 @@ body {
     padding: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
-    top: 120px; /* Position unter den Inputs */
+    top: 120px;
     left: 50%;
-    transform: translateX(-50%); /* Zentrieren */
+    transform: translateX(-50%); 
 }
 
 .preview-title {

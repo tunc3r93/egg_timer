@@ -6,15 +6,15 @@ class EggTimer {
         this.timeInSeconds = 0;
 
         document.addEventListener('DOMContentLoaded', () => {
-            // Event-Listener für Maus-Events auf den Timer-Optionen hinzufügen
+
             const labels = document.querySelectorAll('.timer-options label');
         
             labels.forEach(label => {
                 label.addEventListener('mouseover', (event) => {
                     const input = label.querySelector('input');
-                    const span = label.querySelector('span'); // Hole das <span>-Element
+                    const span = label.querySelector('span'); 
         
-                    if (input && span) { // Stelle sicher, dass sowohl input als auch span existieren
+                    if (input && span) { 
                         const type = input.value;
                         const title = span.innerText.trim();
                         this.showPreview(type, title, event);
@@ -26,11 +26,9 @@ class EggTimer {
                 });
             });
         
-            // Sprache laden
             this.language = new Language();
             this.language.loadLanguage("de");
         });
-        
         
 
         this.startBtn.addEventListener('click', () => {
@@ -92,11 +90,10 @@ class EggTimer {
         previewContainer.style.display = 'block';
         previewTitle.innerText = title;
 
-        // Vorschau je nach Ei-Typ anpassen
         if (type === 'soft') {
             yolk.style.background = 'yellow';
             this.timeInSeconds = 180;
-            yolk.style.animation = ''; // Keine Animation für weiches Ei
+            yolk.style.animation = ''; 
         } else if (type === 'medium') {
             yolk.style.background = 'gold';
             yolk.style.animation = '';
