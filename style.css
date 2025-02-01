@@ -1,0 +1,120 @@
+body {
+    text-align: center;
+    background-color: #f8f9fa;
+}
+
+.egg-container {
+    position: relative;
+    display: inline-block;
+    width: 150px;
+    height: 200px;
+    margin: 20px;
+    cursor: pointer;
+}
+
+.egg {
+    width: 100px;
+    height: 140px;
+    background: white;
+    border-radius: 50% 50% 45% 45%;
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 2px solid #ccc;
+}
+
+.yolk {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    background: yellow;
+    border-radius: 50%;
+    transition: background 2s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.soft .yolk {
+    animation: yolkDrip 3s infinite;
+}
+
+.medium .yolk {
+    background: gold;
+}
+
+.hard .yolk {
+    background: orange;
+}
+
+@keyframes yolkDrip {
+    0% {
+        transform: translate(-50%, -50%) scaleY(1);
+        border-radius: 50%;
+    }
+    30% {
+        transform: translate(-50%, -40%) scaleY(1.3);
+        border-radius: 50% 50% 60% 40%;
+    }
+    60% {
+        transform: translate(-50%, -45%) scaleY(1.1);
+        border-radius: 55% 45% 50% 45%;
+    }
+    100% {
+        transform: translate(-50%, -50%) scaleY(1);
+        border-radius: 50%;
+    }
+}
+
+.big-egg {
+    display: none;
+    position: relative;
+    margin: 20px auto;
+    width: 200px;
+    height: 280px;
+}
+
+.big-egg .egg {
+    width: 180px;
+    height: 250px;
+}
+
+.big-egg .yolk {
+    width: 60px;
+    height: 60px;
+    top: 55%;
+}
+
+.timer-options {
+    margin-top: 20px;
+}
+
+/* Vorschau Container unter den Input-Checkboxen, mittig ausgerichtet */
+.preview-container {
+    position: absolute;
+    display: none;
+    z-index: 1000;
+    width: 200px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    top: 120px; /* Position unter den Inputs */
+    left: 50%;
+    transform: translateX(-50%); /* Zentrieren */
+}
+
+.preview-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.preview-egg {
+    position: relative;
+    width: 100px;
+    height: 140px;
+    margin: auto;
+}
