@@ -2,6 +2,8 @@ class EggTimer {
         constructor(){
         this.startBtn = document.getElementById("start-timer-btn");
         this.timerInterval = null;
+        this.language = null;
+        
 
         document.addEventListener('DOMContentLoaded', () => {
             // Event-Listener für Maus-Events auf den Timer-Optionen hinzufügen
@@ -9,16 +11,27 @@ class EggTimer {
         
             labels.forEach(label => {
                 label.addEventListener('mouseover', (event) => {
-                    const type = label.querySelector('input').value;
-                    const title = label.textContent.trim();
-                    this.showPreview(type, title, event);
+                    const input = label.querySelector('input');
+                    const span = label.querySelector('span'); // Hole das <span>-Element
+        
+                    if (input && span) { // Stelle sicher, dass sowohl input als auch span existieren
+                        const type = input.value;
+                        const title = span.innerText.trim();
+                        this.showPreview(type, title, event);
+                    }
                 });
         
-                label.addEventListener('mouseout', () =>{
+                label.addEventListener('mouseout', () => {
                     this.hidePreview();
                 });
             });
+        
+            // Sprache laden
+            this.language = new Language();
+            this.language.loadLanguage("de");
         });
+        
+        
 
         this.startBtn.addEventListener('click', () => {
             this.startTimer();
@@ -28,7 +41,7 @@ class EggTimer {
     startTimer = () => {
         let selectedTime = document.querySelector('input[name="timer"]:checked');
         if (!selectedTime) {
-            alert("Bitte eine Kochzeit wählen!");
+            language.showError();
             return;
         }
         
@@ -78,7 +91,7 @@ class EggTimer {
 
         previewContainer.style.display = 'block';
         previewTitle.innerText = title;
-        console.log(type);
+        
         // Vorschau je nach Ei-Typ anpassen
         if (type === 'soft') {
             yolk.style.background = 'yellow';
