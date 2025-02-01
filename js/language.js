@@ -24,6 +24,9 @@ class Language{
         let header = document.querySelector("h1");
         if (header) header.innerText = data.header;
     
+        let title = document.querySelector("title span");
+        if (title) title.innerText = data.title;
+
         let softLabel = document.querySelector('label[for="soft"] span');
         if (softLabel) softLabel.innerText = `3 Minuten (${data.label.soft})`;
     
